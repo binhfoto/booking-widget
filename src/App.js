@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { BrowserRouter, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-
-
 import { Provider } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
+
+import Layout from "./components/Layout";
+import HomeButton from "./components/HomeButton";
 
 const App = () => {
 
@@ -21,7 +21,7 @@ const App = () => {
         <MuiThemeProvider>
           <BrowserRouter>
             <Layout>
-
+                <Route exact path="/" component={HomeButton}/>
             </Layout>
           </BrowserRouter>
         </MuiThemeProvider>
