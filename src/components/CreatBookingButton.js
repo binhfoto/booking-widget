@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export default () => {
     return (
-        <Link to="/new/booking">
+        <Link to="/select/session">
             <FloatingActionButton secondary={true}>
                 <ContentAdd />
             </FloatingActionButton>
