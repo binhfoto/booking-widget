@@ -1,12 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Paper from 'material-ui/Paper'
+import {List} from 'material-ui/List'
 import '../styles/common.css'
 
-export default () => {
+const CustomHeader = ({items}) => {
     return (
-        <Paper className="custom-header">
-
-        </Paper>
+        <List className="list-reset-padding">
+            {
+                items.map((item, index) => {
+                    return React.cloneElement(item, {key: index});
+                }
+            )}
+        </List>
     )
 };
+
+CustomHeader.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.element)
+};
+
+export default CustomHeader;
+

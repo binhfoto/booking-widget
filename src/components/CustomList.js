@@ -5,9 +5,8 @@ import Divider from 'material-ui/Divider';
 import '../styles/common.css';
 
 const CustomList = ({items}) => {
-
     return (
-        <List className="custom-list">
+        <List className="list list-reset-padding">
             {
                 items.map((item, index, array) => {
                     return (
@@ -15,12 +14,12 @@ const CustomList = ({items}) => {
                             <ListItem
                                 onClick = {item.onItemClick}
                                 primaryText={
-                                    <div className="custom-list-item-primary">
+                                    <div className="list-item-primary">
                                         {item.text}
                                     </div>
                                 }
                                 secondaryText={
-                                    <div className="custom-list-item-secondary">
+                                    <div className="list-item-secondary">
                                         <span>{item.descLeft}</span>
                                         <span>{item.descRight}</span>
                                     </div>

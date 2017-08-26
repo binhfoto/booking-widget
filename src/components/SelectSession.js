@@ -2,16 +2,41 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
+import {List, ListItem} from 'material-ui/List';
+import IconButton from 'material-ui/IconButton';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
+import BackIcon from 'material-ui/svg-icons/hardware/keyboard-backspace';
 import CustomList from './CustomList';
+import CustomHeader from './CustomHeader';
 import {selectSessionAction} from '../actions'
+import '../styles/common.css'
 
 const Link_To_Date = '/select/date';
 
 const SelectSession = ({sessions, selectSession, push}) => {
 
-    let items = sessions.map(({name, type, duration, price}, index) => {
+    let onIconClick = () => {
+        push('/');
+    }
 
-        return {
+    let headers = [<ListItem
+        className="header"
+        disabled={true}
+        primaryText={
+            <div className="header-primary">
+                <IconButton disabled>
+                    <BackIcon />
+                </IconButton>
+                <span className="header-primary-text">Select Session</span>
+                <IconButton onClick={onIconClick}>
+                    <CloseIcon />
+                </IconButton>
+            </div>
+        }
+    />];
+
+    let items = sessions.map(({name, type, duration, price}, index) => (
+        {
             text: name,
             isTextCenter: false,
             descLeft: [duration, type].join(' '),
@@ -22,11 +47,14 @@ const SelectSession = ({sessions, selectSession, push}) => {
                 selectSession(sessions[index]);
                 push(Link_To_Date);
             }
-        };
-    });
+        }
+    ));
 
     return (
-        <CustomList items={items}/>
+        <div className="display-column">
+            <CustomHeader items={headers}/>
+            <CustomList items={items}/>
+        </div>
     );
 };
 
